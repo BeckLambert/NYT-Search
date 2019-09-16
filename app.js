@@ -32,16 +32,12 @@
           url: url,
           method: "GET"
         }).then(function(response){
-            console.log(response);
-            var results = response.data
+            console.log(response.docs);
+            var results = response.response.docs
             for (var i = 0; i < results.length; i++) {
                 var articleDiv = $('<div>');
-                animalImage.attr("src", results[i].images.fixed_height.url);
-                animalDiv.append(p, animalImage);
-                $('#gifs-appear-here').prepend(animalDiv);
-        }).then(function (response){
-            console.log(response);
-        });
+                $('#article-session').append(results[i].headline);
+            }
       });
-    
+    });
       $("#clear-all").on("click", clear);
