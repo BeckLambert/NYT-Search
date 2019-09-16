@@ -8,3 +8,21 @@ var apikey = "FZKSZP72n3AR2H39MbCcX0aN2kQXvlqu";
     }).then(function (response) {
         console.log(response);
     });
+
+
+    function clear() {
+        $("#article-section").empty();
+      }
+    
+      $("#run-search").on("click", function(event) {
+        event.preventDefault();
+        clear();
+    
+        var queryURL = buildQueryURL();
+        $.ajax({
+          url: queryURL,
+          method: "GET"
+        }).then(updatePage);
+      });
+    
+      $("#clear-all").on("click", clear);
