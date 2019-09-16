@@ -3,29 +3,23 @@
     var endDate = $("#end-year").val();
     var begin;
     var end;
-    var apikey = "FZKSZP72n3AR2H39MbCcX0aN2kQXvlqu";
-    var url = "https://api.nytimes.com/svc/search/v2/articlesearch.json?&q=begin_date&end_date" + keyword + "&api-key=" + apikey + begin + end + keyword;
+    var updatePage;
     
     if(beginDate !== ""){
         begin = "&begin_date" + beginDate;
     } else {
         begin = "";
     };
-
+    
     if(endDate !== ""){
         end = "&end_date" + endDate;
     } else {
         end = "";
     };
     
-    $.ajax({
-        url: url,
-        method: "GET"
-    }).then(function (response) {
-        console.log(response);
-    });
-
-
+    var apikey = "FZKSZP72n3AR2H39MbCcX0aN2kQXvlqu";
+    var url = "https://api.nytimes.com/svc/search/v2/articlesearch.json?&q=begin_date&end_date" + keyword + "&api-key=" + apikey + begin + end;
+  
     function clear() {
         $("#article-section").empty();
       }
@@ -34,9 +28,9 @@
         event.preventDefault();
         clear();
     
-        var queryURL = buildQueryURL();
+        
         $.ajax({
-          url: queryURL,
+          url: url,
           method: "GET"
         }).then(updatePage);
       });
