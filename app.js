@@ -6,20 +6,20 @@
     var updatePage;
     
     if(beginDate !== ""){
-        begin = "&begin_date" + beginDate;
+        begin = "&begin_date=" + beginDate;
     } else {
         begin = "";
     };
     
     if(endDate !== ""){
-        end = "&end_date" + endDate;
+        end = "&end_date=" + endDate;
     } else {
         end = "";
     };
     
     var apikey = "qukgqMyzFb2sUd4XG8ajQcrhAmlqkp1W";
-    var url = "https://api.nytimes.com/svc/search/v2/articlesearch.json?&q=begin_date&end_date" + keyword + "&api-key=" + apikey + begin + end;
-  
+    var url = "https://api.nytimes.com/svc/search/v2/articlesearch.json?&q=" + keyword + "&api-key=" + apikey + begin + end;
+    console.log(url);
     function clear() {
         $("#article-section").empty();
       }
@@ -32,7 +32,9 @@
         $.ajax({
           url: url,
           method: "GET"
-        }).then(updatePage);
+        }).then(function (response){
+            console.log(response);
+        });
       });
     
       $("#clear-all").on("click", clear);
