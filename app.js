@@ -33,6 +33,12 @@
           method: "GET"
         }).then(function(response){
             console.log(response);
+            var results = response.data
+            for (var i = 0; i < results.length; i++) {
+                var articleDiv = $('<div>');
+                animalImage.attr("src", results[i].images.fixed_height.url);
+                animalDiv.append(p, animalImage);
+                $('#gifs-appear-here').prepend(animalDiv);
         });
       });
     
