@@ -4,7 +4,7 @@
     var begin;
     var end;
     var apikey = "FZKSZP72n3AR2H39MbCcX0aN2kQXvlqu";
-    var url = "https://api.nytimes.com/svc/search/v2/articlesearch.json?&q=begin_date&end_date" + keyword + "&api-key=" + apikey;
+    var url = "https://api.nytimes.com/svc/search/v2/articlesearch.json?&q=begin_date&end_date" + keyword + "&api-key=" + apikey + begin + end + keyword;
     
     if(beginDate !== ""){
         begin = "&begin_date" + beginDate;
