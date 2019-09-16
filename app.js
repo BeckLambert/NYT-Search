@@ -1,4 +1,4 @@
-var keyword = "goldfish";
+var keyword = "";
 var beginDate = $("#start-year").val();
 var endDate = $("#end-year").val();
 var begin;
@@ -35,9 +35,10 @@ $("#run-search").on("click", function (event) {
         console.log(response);
         var results = response.response.docs;
         for (var i = 0; i < results.length; i++) {
-            var articleDiv = $('<div>');
            
-            $('#article-section').append(results[i].headline.main);
+            $('#article-section').append("<p>" + results[i].headline.main + "</p>");
+            $('#article-section').append("<p>" + results[i].byline.original + "</p>");
+            $('#article-section').append("<p>" + results[i].abstract + "</p>");
         }
     });
 });
