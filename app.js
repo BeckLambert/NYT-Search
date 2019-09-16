@@ -1,7 +1,23 @@
-var apikey = "FZKSZP72n3AR2H39MbCcX0aN2kQXvlqu";
     var keyword = "goldfish";
-    //var url = "https://api.nytimes.com/svc/archive/v1/2019/1.json?api-key=" + apikey;
-    var url = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + keyword + "&api-key=" + apikey;
+    var beginDate = $("#start-year").val();
+    var endDate = $("#end-year").val();
+    var begin;
+    var end;
+    var apikey = "FZKSZP72n3AR2H39MbCcX0aN2kQXvlqu";
+    var url = "https://api.nytimes.com/svc/search/v2/articlesearch.json?&q=begin_date&end_date" + keyword + "&api-key=" + apikey;
+    
+    if(beginDate !== ""){
+        begin = "&begin_date" + beginDate;
+    } else {
+        begin = "";
+    };
+
+    if(endDate !== ""){
+        end = "&end_date" + endDate;
+    } else {
+        end = "";
+    };
+    
     $.ajax({
         url: url,
         method: "GET"
